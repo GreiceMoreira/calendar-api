@@ -9,6 +9,7 @@ public class Calendar implements Serializable {
 
     private List<Event> events = new ArrayList<>();
 
+    //Getter and setter for the list of events (Calendar)
     public List<Event> getEvents() {
         return events;
     }
@@ -17,14 +18,18 @@ public class Calendar implements Serializable {
         this.events = events;
     }
 
+
+    //Add an event to the list
     public void addEvent(Event event) {
         events.add(event);
     }
 
+    //Remove an event from the list
     public void removeEvent(Event event) {
         events.remove(event);
     }
 
+    //Update an event in the list
     public void updateEvent(Event event) {
         var index = getEventIndex(event);
         if (index < 0) {
@@ -33,10 +38,12 @@ public class Calendar implements Serializable {
         events.set(index, event);
     }
 
+    //Get the index of the event in the list
     private int getEventIndex(Event event) {
         return events.indexOf(event);
     }
 
+    //Get an event from the list by its ID
     public Event getEventById(String id) {
         for (Event event : events) {
             if (event.getId().equals(id)) {

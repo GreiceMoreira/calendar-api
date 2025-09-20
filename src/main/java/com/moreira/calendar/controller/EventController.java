@@ -28,34 +28,39 @@ public class EventController {
         this.service = service;
     }
 
+    // Request to add a new event to the database
     @PostMapping(path = "events", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public String newEvent(@RequestBody Event event) {
         return service.addEvent(event);
     }
 
+    // Request to get all events from the database
     @GetMapping(path = "events", produces = MediaType.APPLICATION_JSON_VALUE)
     public Calendar getAllEvents() {
         return service.getAllEvents();
     }
 
+    // Request to get one event by ID
     @GetMapping(value="events/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Event getEventById(@PathVariable("id") String id) {
         return service.getEventById(id);
     }
 
-
+    // Request to get events by date
     @GetMapping(value="events/date/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Event> getEventByDate(@PathVariable("date") LocalDate date) {
         return service.getEventByDate(date);
     }
 
-
+    // Request to update an event by ID
     @PutMapping(path = "events/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateEvent(@PathVariable("id") String id, @RequestBody Event event) {
         service.updateEvent(event);
     }
     
+
+    // Request to delete an event from the database by ID
     @DeleteMapping(path = "events/{id}")
     public void delete(@PathVariable("id") String id) {
         service.deleteEvent(id);

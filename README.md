@@ -32,3 +32,5 @@ This project is part of my learning journey in building and consuming APIs, and 
 
 If using Spring Boot:
 ./mvnw spring-boot:run
+
+in local environment : mvn spring-boot:run -Dspring-boot.run.profiles=local
